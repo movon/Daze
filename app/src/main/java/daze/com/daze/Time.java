@@ -9,8 +9,6 @@ import java.util.Calendar;
  * Created by Tal on 5/1/2015.
  */
 public class Time {
-
-
     private int hour;
     private int day;
     private int month;
@@ -23,7 +21,6 @@ public class Time {
         this.day = day;
         this.hour = hour;
         this.minute = minute;
-
 
     }
 

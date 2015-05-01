@@ -11,7 +11,6 @@ public class Day {
 
     public Day(List<CalendarEvent> schedule){
         this.schedule=schedule;
-
     }
 
     public void addEvent(CalendarEvent event){

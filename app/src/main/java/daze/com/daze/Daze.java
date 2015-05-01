@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.util.LayoutDirection;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -18,16 +20,28 @@ import java.util.ArrayList;
 public class Daze extends Activity {
 
     Calendar calendar;
-
-    String[] months = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+    Button incrementDayButton;
+    Date date;
+    TextView dateTV;
+    public static String[] months = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daze);
 
-        calendar = new Calendar(new ArrayList<Year>());
+        calendar = new Calendar();
 
+        dateTV = (TextView)findViewById(R.id.dateTV);
+        date = new Date(2015,1,5);
+        incrementDayButton = (Button)findViewById(R.id.incrementDayButton);
+        incrementDayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                date.incrementDay();
+                dateTV.setText(Date.dateToString(date));
+            }
+        });
 
         Button[] daysButtons = new Button[3];
         for(int i =0; i < 3;i++) {
@@ -52,26 +66,6 @@ public class Daze extends Activity {
         tl.addView(tr);
 
 
-
-
-
-        /*
-        TableLayout prices = (TableLayout)findViewById(R.id.prices);
-        prices.setStretchAllColumns(true);
-        prices.bringToFront();
-        for(int i = 0; i < drug.length; i++){
-            TableRow tr =  new TableRow(this);
-            TextView c1 = new TextView(this);
-            c1.setText(drug[i].getName());
-            TextView c2 = new TextView(this);
-            c2.setText(String.valueOf(drug[i].getPrice()));
-            TextView c3 = new TextView(this);
-            c3.setText(String.valueOf(drug[i].getAmount()));
-            tr.addView(c1);
-            tr.addView(c2);
-            tr.addView(c3);
-            prices.addView(tr);
-        }*/
 
     }
 
