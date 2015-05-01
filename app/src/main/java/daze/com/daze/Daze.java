@@ -1,14 +1,21 @@
 package daze.com.daze;
 
 import android.app.Activity;
+import android.content.ClipData;
 import android.os.Bundle;
+import android.view.DragEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +37,14 @@ TODO LIST:
 13.Highlight and flash hours that have a notification
  */
 
-public class Daze extends Activity {
+public class Daze extends Activity{
 
     Calendar calendar;
     Button incrementDayButton;
     Date date;
     TextView dateTV;
     Button[] daysButtons;
+    TableLayout tl;
     public static String[] months = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     @Override
@@ -81,9 +89,19 @@ public class Daze extends Activity {
         }
         tempDate = null;
 
-
-        TableLayout tl = (TableLayout)findViewById(R.id.tableLayout);
+        tl = (TableLayout)findViewById(R.id.tableLayout);
         tl.bringToFront();
+
+
+
+
+
+
+
+        Toast talsToast = Toast.makeText(getApplicationContext(), "Go mov_on", Toast.LENGTH_LONG);
+        talsToast.show();
+
+
 
 
 
@@ -163,3 +181,4 @@ public class Daze extends Activity {
         return super.onOptionsItemSelected(item);
     }
 }
+
