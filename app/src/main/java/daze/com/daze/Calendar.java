@@ -20,10 +20,9 @@ public class Calendar {
 
     void initCalendar(){
         Date date = new Date(2015, 1,5);
-        for(int i =0; i<100;i++) {
+        for(int i =0; i<300;i++) {
             dateToDay.put(date, new Day(new ArrayList<CalendarEvent>()));
             date.incrementDay();
-            System.out.println(Date.dateToString(date));
         }
     }
 
@@ -38,5 +37,15 @@ public class Calendar {
     //public getDayAsDate()
     public List<Year> getYears() {
         return years;
+    }
+
+    public static int currentYear(){
+        return java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
+    }
+    public static int currentMonth(){
+        return java.util.Calendar.getInstance().get(java.util.Calendar.MONTH);
+    }
+    public static int currentDayOfMonth(){
+        return java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_MONTH);
     }
 }

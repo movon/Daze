@@ -23,6 +23,7 @@ public class Daze extends Activity {
     Button incrementDayButton;
     Date date;
     TextView dateTV;
+    Button[] daysButtons;
     public static String[] months = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     @Override
@@ -32,22 +33,36 @@ public class Daze extends Activity {
 
         calendar = new Calendar();
 
+
+        daysButtons = new Button[3];
+        for(int i =0; i < 3;i++) {
+            daysButtons[i] = new Button(this);
+        }
+
         dateTV = (TextView)findViewById(R.id.dateTV);
-        date = new Date(2015,1,5);
+        date = new Date(Calendar.currentYear(), Calendar.currentMonth(), Calendar.currentDayOfMonth());
         incrementDayButton = (Button)findViewById(R.id.incrementDayButton);
         incrementDayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 date.incrementDay();
                 dateTV.setText(Date.dateToString(date));
+                Date tempDate;
+                tempDate = new Date(date.getYear(), date.getMonth(), date.getDay());
+                for(int i =0; i < 3;i++) {
+                    daysButtons[i].setText(Date.dateToString(tempDate));
+                    tempDate.incrementDay();
+                }
+                tempDate = null;
             }
         });
 
-        Button[] daysButtons = new Button[3];
+
+
+
         for(int i =0; i < 3;i++) {
-            daysButtons[i] = new Button(this);
-            daysButtons[i].setText(months[java.util.Calendar.getInstance().get(java.util.Calendar.MONTH)] + " " + Time.dayToString(java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_MONTH) + i));
             daysButtons[i].setAllCaps(false);
+            daysButtons[i].setText(Date.dateToString(date));
         }
 
 

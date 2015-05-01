@@ -37,8 +37,8 @@ public class Date {
     public void setYear(int year) {
         this.year = year;
     }
-    private Map<Integer, Integer> months;
-    private Map<Integer, Integer> leapMonths;
+    private static Map<Integer, Integer> months;
+    private static Map<Integer, Integer> leapMonths;
 
     public Date(int year, int month, int day){
         this.year = year;
@@ -58,7 +58,7 @@ public class Date {
         months.put(10, 31);
         months.put(11, 30);
         months.put(12, 31);
-        Map<Integer, Integer> leapMonths = new HashMap<Integer, Integer>();
+        leapMonths = new HashMap<Integer, Integer>();
         leapMonths.put(1, 31);
         leapMonths.put(2, 29);
         leapMonths.put(3, 31);
