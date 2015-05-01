@@ -22,6 +22,8 @@ public class Time {
         this.day = day;
         this.hour = hour;
         this.minute = minute;
+
+
     }
 
     public int getHour() {
