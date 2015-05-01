@@ -1,5 +1,7 @@
 package daze.com.daze;
 
+import android.provider.Settings;
+
 import java.util.List;
 
 /**
@@ -7,12 +9,20 @@ import java.util.List;
  */
 public class Day {
 
+
+
     private List<CalendarEvent> schedule;
-
-    public Day(List<CalendarEvent> schedule){
+    private Date date;
+    public Day(List<CalendarEvent> schedule, Date date){
         this.schedule=schedule;
+        this.date = date;
     }
-
+    public List<CalendarEvent> getSchedule() {
+        return schedule;
+    }
+    public Date getDate(){
+        return date;
+    }
     public void addEvent(CalendarEvent event){
         schedule.add(event);
     }

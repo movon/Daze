@@ -3,11 +3,6 @@ package daze.com.daze;
 /**
  * Created by Tal on 5/1/2015.
  */
-import java.util.Calendar;
-
-/**
- * Created by Tal on 5/1/2015.
- */
 public class Time {
     private int hour;
     private int day;

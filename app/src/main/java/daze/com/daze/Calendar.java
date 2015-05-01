@@ -7,21 +7,21 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Created by Tal on 5/1/2015.
  */
 public class Calendar {
 
-    Map<Date, Day> dateToDay = new HashMap<Date, Day>();
+    static Map<String, Day> dateToDay = new HashMap<String, Day>();
+
     private List<Year> years;
 
-
+    Date date;
     void initCalendar(){
-        Date date = new Date(2015, 1,5);
-        for(int i =0; i<300;i++) {
-            dateToDay.put(date, new Day(new ArrayList<CalendarEvent>()));
+        date = new Date(2015, 1,5);
+        for(int i =0; i<3650;i++) {
+            dateToDay.put(Date.formatDate(date), new Day(new ArrayList<CalendarEvent>(), date));
             date.incrementDay();
         }
     }
@@ -43,7 +43,7 @@ public class Calendar {
         return java.util.Calendar.getInstance().get(java.util.Calendar.YEAR);
     }
     public static int currentMonth(){
-        return java.util.Calendar.getInstance().get(java.util.Calendar.MONTH);
+        return java.util.Calendar.getInstance().get(java.util.Calendar.MONTH)+1;
     }
     public static int currentDayOfMonth(){
         return java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_MONTH);

@@ -94,12 +94,29 @@ public class Date {
         if(day > daysinmonth){
             day = 1;
             if(month >= 12){
-                month =0 ;
+                month =1;
                 year++;
             }
             else
                 month++;
         }
+    }
+
+    @Override
+    public String toString() {
+        return formatDate(this);
+    }
+    public static String formatDate(Date date){
+        String year = date.getYear()+"";
+        while(year.length() < 4)
+            year = "0" + year;
+        String month = date.getMonth()+"";
+        while(month.length() < 4)
+            month = "0" + month;
+        String day = date.getDay()+"";
+        while(day.length() < 4)
+            day = "0" + day;
+        return year+month+day;
     }
 
     public static String dateToString(Date date){

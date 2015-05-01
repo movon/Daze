@@ -1,21 +1,34 @@
 package daze.com.daze;
 
-import android.animation.LayoutTransition;
 import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.util.LayoutDirection;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
+/*
+TODO LIST:
+1.Slide between dates
+2.Show whole week, month
+3.Let user add an event
+4.Expand day and show detailed schedule
+5.Define default week
+6.Save Calendar object
+7.Check messages for events
+8.Add Event chat
+9.Add Event time sync
+10.Add social event requests
+11.Add scial event chat
+12.Make new notification
+13.Highlight and flash hours that have a notification
+ */
 
 public class Daze extends Activity {
 
@@ -37,6 +50,7 @@ public class Daze extends Activity {
         daysButtons = new Button[3];
         for(int i =0; i < 3;i++) {
             daysButtons[i] = new Button(this);
+            daysButtons[i].setTextSize(12);
         }
 
         dateTV = (TextView)findViewById(R.id.dateTV);
@@ -49,7 +63,7 @@ public class Daze extends Activity {
                 dateTV.setText(Date.dateToString(date));
                 Date tempDate;
                 tempDate = new Date(date.getYear(), date.getMonth(), date.getDay());
-                for(int i =0; i < 3;i++) {
+                for (int i = 0; i < 3; i++) {
                     daysButtons[i].setText(Date.dateToString(tempDate));
                     tempDate.incrementDay();
                 }
@@ -59,12 +73,13 @@ public class Daze extends Activity {
 
 
 
-
+        Date tempDate = new Date(date.getYear(), date.getMonth(), date.getDay());
         for(int i =0; i < 3;i++) {
             daysButtons[i].setAllCaps(false);
-            daysButtons[i].setText(Date.dateToString(date));
+            daysButtons[i].setText(Date.dateToString(tempDate));
+            tempDate.incrementDay();
         }
-
+        tempDate = null;
 
 
         TableLayout tl = (TableLayout)findViewById(R.id.tableLayout);
@@ -78,7 +93,49 @@ public class Daze extends Activity {
                 tr.addView(daysButtons[i]);
         }
 
+
+        TableRow[] tableRows = new TableRow[3];
+        for(int i=0;i<3;i++)
+            tableRows[i] = new TableRow(getApplicationContext());
+
+        date = new Date(Calendar.currentYear(), Calendar.currentMonth(), Calendar.currentDayOfMonth());
+
+        Time time = new Time(2015,1,1,1,1);
+        List<User> participants = new ArrayList<User>();
+        String eventDescription = "Work with mov_on.";
+
+        Calendar.dateToDay.get(Date.formatDate(date)).addEvent(new CalendarEvent(time, participants,eventDescription));
+
+
+        Time time2 = new Time(2015,1,1,1,1);
+        List<User> participants2 = new ArrayList<User>();
+        String eventDescription2 = "Work on Weex.";
+
+        Date tempDate2 = new Date(date.getYear(),date.getMonth(),date.getDay());
+        tempDate2.incrementDay();
+        Calendar.dateToDay.get(Date.formatDate(tempDate2)).addEvent(new CalendarEvent(time2, participants2, eventDescription2));
+
+
+
+        for(int i = 1;i<=3;i++){
+            List<CalendarEvent> schedule = Calendar.dateToDay.get(Date.formatDate(date)).getSchedule();
+            for(int j =0; j< schedule.size();j++){
+                if(schedule.get(j) != null)
+                {
+                    TextView description = new TextView(this);
+                    description.setWidth(0);
+                    description.setText(schedule.get(j).getDescription());
+                    tableRows[j].addView(description);
+                }
+            }
+            date.incrementDay();
+        }
+
         tl.addView(tr);
+        for(int i=0; i<tableRows.length;i++)
+        {
+           tl.addView(tableRows[i]);
+        }
 
 
 
