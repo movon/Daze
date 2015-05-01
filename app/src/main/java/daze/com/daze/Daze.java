@@ -12,6 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import java.util.ArrayList;
+
 
 public class Daze extends Activity {
 
@@ -24,7 +26,7 @@ public class Daze extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daze);
 
-        calendar = new Calendar();
+        calendar = new Calendar(new ArrayList<Year>());
 
 
         Button[] daysButtons = new Button[3];

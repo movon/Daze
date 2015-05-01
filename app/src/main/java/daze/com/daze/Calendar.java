@@ -9,19 +9,13 @@ import java.util.List;
  * Created by Tal on 5/1/2015.
  */
 public class Calendar {
-    private List<CalendarEvent> schedule;
+    private List<Year> years;
 
 
-    public Calendar() {     //get id of user
+    public Calendar(List<Year> years){this.years=years;}//get id of user
 
+    public List<Year> getSchedule(){
+        return years;
     }
-    public List<CalendarEvent> getSchedule(){
-        return schedule;
-    }
-    public void addEvent(CalendarEvent event){
-        schedule.add(event);
-    }
-    public void removeEvent(CalendarEvent event){
-        schedule.remove(event);
-    }
+    //public getDayAsDate()
 }
