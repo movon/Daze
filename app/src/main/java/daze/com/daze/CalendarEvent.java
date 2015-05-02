@@ -13,7 +13,7 @@ public class CalendarEvent {
     private Time time;
     private List<User> participants;
     private String description;
-    private 
+    private Time duration;
 
     public CalendarEvent(Time time, List<User> participants, String description){
         this.time = time;
@@ -27,11 +27,6 @@ public class CalendarEvent {
 
     public void setTime(Time time) {
         this.time = time;
-    }
-
-    public void scheduleTime(Time startTime, Time endTime, )
-    {
-
     }
 
     public String getDescription() {
