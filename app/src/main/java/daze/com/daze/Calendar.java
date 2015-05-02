@@ -39,15 +39,27 @@ public class Calendar {
         return java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_MONTH);
     }
 
-    public Time findTime(Time startTime, Time endTime, int duration, CalendarEvent event) {
-        Time scheduled = startTime;
-        while(Compare(scheduled, endTime)==-1)
+    public int findTime(Time startTime, Time endTime, int duration, CalendarEvent event) {
+    Time scheduled = startTime;
+    while(Time.cmpTimes(scheduled, endTime)==-1)
+    {
+        CalendarEvent events;
+        Time midnight = new Time(startTime.getYear(),startTime.getMonth(),startTime.getDay(),0,0);
+        //for(CalendarEvent events:Calendar.dateToDay.get(scheduled).getSchedule())
+        for(int i=0;i<Calendar.dateToDay.get(scheduled).getSchedule().size();i++)
         {
-            for(CalendarEvent events:Calendar.dateToDay.get(scheduled).getSchedule())
+            events = Calendar.dateToDay.get(scheduled).getSchedule().get(i);
+            if()
+            if(((getNextEvent(scheduled).getTime().minutesSinceDayStarted())-(events.getTime().minutesSinceDayStarted()+events.getDuration())>=duration))
             {
-                if()
+                event.setTime(scheduled);
+                Calendar.dateToDay.get(scheduled).getSchedule().add(event);
+                return 1;
             }
-            scheduled.incrementDay();
         }
+        scheduled.incrementDay();
+        midnight.incrementDay();
     }
+    return 0;
+}
 }

@@ -105,12 +105,14 @@ public class Time extends Date{
             incrementDay();
         }
     }
-    public void incrementMinute(){
-        minute++;
-        if(minute>=24) {
-            minute = 0;
+    public void incrementMinute(int amount){
+        minute+=amount;
+        while(minute>=60) {
+            minute-=60;
             incrementHour();
         }
     }
+
+
 
 }

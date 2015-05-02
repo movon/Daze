@@ -53,4 +53,5 @@ public class CalendarEvent{
     public void setParticipants(List<User> participants) {
         this.participants = participants;
     }
+
 }

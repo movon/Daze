@@ -32,5 +32,35 @@ public class Day {
     }
     public void removeEvent(CalendarEvent event){schedule.remove(event); }
 
+    public CalendarEvent getNextEvent(Time startTime) {
+        int mindiff = 0;
+        CalendarEvent nextevent = null;
+        for (CalendarEvent event : Calendar.dateToDay.get(startTime).getSchedule()) {
+            if(event.getTime().minutesSinceDayStarted()-startTime.minutesSinceDayStarted()>0)
+            {
+                if(mindiff==0)
+                {
+                    mindiff=event.getTime().minutesSinceDayStarted()-startTime.minutesSinceDayStarted();
+                    nextevent = event;
+                }
+                else
+                {
+                    if(event.getTime().minutesSinceDayStarted()-startTime.minutesSinceDayStarted()<mindiff)
+                    {
+                        mindiff=event.getTime().minutesSinceDayStarted()-startTime.minutesSinceDayStarted();
+                        nextevent = event;
+                    }
+                }
+            }
+        }
+        if(mindiff==0)
+        {
+            return null;
+        }
+        else
+        {
+            return nextevent;
+        }
+    }
 
 }
