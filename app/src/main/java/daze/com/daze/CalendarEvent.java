@@ -29,10 +29,8 @@ public class CalendarEvent {
         this.time = time;
     }
 
-<<<<<<< HEAD
-=======
+    public void setDuration(Time duration) {this.duration=duration;}
 
->>>>>>> 6920ed420aa97fab82688571b260e81f979e2eb8
     public String getDescription() {
         return description;
     }

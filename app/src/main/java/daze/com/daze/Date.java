@@ -8,8 +8,6 @@ import java.util.Map;
  */
 public class Date {
 
-
-
     private int year;
     private int month;
     private int day;
@@ -142,5 +140,4 @@ public class Date {
     public static String dateToString(Date date){
         return (date.getYear() + " ") + Daze.months[date.getMonth()-1] + " " + Time.dayToString(date.getDay());
     }
-
 }
