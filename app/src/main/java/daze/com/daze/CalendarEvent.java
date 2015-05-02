@@ -16,7 +16,6 @@ public class CalendarEvent{
     private Time time;
     private List<User> participants;
     private String description;
-    private Time duration;
 
     public CalendarEvent(Time time, List<User> participants, String description, int duration){
         this.time = time;
@@ -32,11 +31,6 @@ public class CalendarEvent{
         this.time = time;
     }
 
-<<<<<<< HEAD
-    public void setDuration(Time duration) {this.duration=duration;}
-
-=======
->>>>>>> 4ea9885ede1cf0a1ef7d6dd0b6387a72e9ce7c09
     public String getDescription() {
         return description;
     }
