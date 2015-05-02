@@ -15,23 +15,6 @@
         android:layout_alignParentStart="true"
         android:id="@+id/tableLayout"></TableLayout>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Increment day"
-        android:id="@+id/incrementDayButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="216dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/dateTV"
-        android:layout_below="@+id/tableLayout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="82dp" />
 
 </RelativeLayout>

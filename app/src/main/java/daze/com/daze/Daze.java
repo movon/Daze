@@ -18,7 +18,7 @@ import java.util.List;
 
 /*
 TODO LIST:
-1.Slide between dates
+1.Slide between dates V
 2.Show whole week, month
 3.Let user add an event
 4.Expand day and show detailed schedule
@@ -38,7 +38,6 @@ public class Daze extends Activity{
 
     Calendar calendar;
     Date date;
-    TextView dateTV;
     Button[] daysButtons;
     TableLayout tl;
     public static String[] months = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
@@ -57,7 +56,6 @@ public class Daze extends Activity{
             daysButtons[i].setTextSize(12);
         }
 
-        dateTV = (TextView)findViewById(R.id.dateTV);
         date = new Date(Calendar.currentYear(), Calendar.currentMonth(), Calendar.currentDayOfMonth());
 
 
@@ -93,17 +91,6 @@ public class Daze extends Activity{
 
         tl = (TableLayout)findViewById(R.id.tableLayout);
         tl.bringToFront();
-
-
-
-
-
-
-
-        Toast talsToast = Toast.makeText(getApplicationContext(), "Go mov_on", Toast.LENGTH_LONG);
-        talsToast.show();
-
-
 
 
 
