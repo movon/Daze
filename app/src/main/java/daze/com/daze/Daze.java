@@ -2,10 +2,8 @@ package daze.com.daze;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
@@ -35,7 +33,7 @@ TODO LIST:
 
 public class Daze extends Activity{
 
-
+    RelativeLayout rl;
     Calendar calendar;
     Date date;
     Button[] daysButtons;
@@ -68,7 +66,7 @@ public class Daze extends Activity{
 
         final Toast swipeLeftToast = Toast.makeText(getApplicationContext(), "You swiped left", Toast.LENGTH_SHORT);
 
-        RelativeLayout rl = (RelativeLayout)findViewById(R.id.relativeLayout);
+        rl = (RelativeLayout)findViewById(R.id.relativeLayout);
         rl.setOnTouchListener(new OnSwipeTouchListener(getApplicationContext()) {
             @Override
             public void onSwipeLeft() {
@@ -78,7 +76,10 @@ public class Daze extends Activity{
                 updateDatesButtons();
                 // Whatever
             }
-
+            @Override
+            public void onSwipe(float deltaX){
+                rl.animate().translationX(deltaX);
+            }
             @Override
             public void onSwipeRight() {
                 swipeRightToast.show();

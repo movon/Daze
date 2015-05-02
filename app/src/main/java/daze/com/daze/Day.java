@@ -20,9 +20,7 @@ public class Day {
     public List<CalendarEvent> getSchedule() {
         return schedule;
     }
-    public Date getDate(){
-        return date;
-    }
+    public Date getDate(){  return date;    }
     public void addEvent(CalendarEvent event){
         schedule.add(event);
     }
