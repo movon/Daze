@@ -29,7 +29,6 @@ public class CalendarEvent {
     }
 
 
-
     public String getDescription() {
         return description;
     }

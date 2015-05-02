@@ -92,7 +92,6 @@ public class Time {
                                 else
                                     msg = day+"th";
                             }
-
                         }
                     }
                 }
