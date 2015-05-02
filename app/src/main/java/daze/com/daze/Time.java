@@ -112,5 +112,31 @@ public class Time extends Date{
             incrementHour();
         }
     }
+    public static int minutesDifference(Time time1, Time time2){
+        return (time1.minutesSinceDayStarted()-time2.minutesSinceDayStarted());
+    }
+    public static int cmpTimes(Time time1,Time time2)
+    {
+        if(time1.getYear()>time2.getYear())
+            return 1;
+        else if(time1.getYear()==time2.getYear())
+        {
+            if(time1.getMonth()>time2.getMonth())
+                return 1;
+            else if(time1.getMonth()==time2.getMonth())
+            {
+                if(time1.getDay()>time2.getDay())
+                    return 1;
+                else if(time1.getDay()==time2.getDay())
+                    return 0;
+                else
+                    return -1;
+            }
+            else
+                return -1;
+        }
+        else
+            return -1;
+    }
 
 }
