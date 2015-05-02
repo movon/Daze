@@ -22,13 +22,9 @@ public class Time extends Date{
         return hour*60 + minute;
     }
 
-    public int getHour() {
-        return hour;
-    }
+    public int getHour() { return hour;}
 
-    public void setHour(int hour) {
-        this.hour = hour;
-    }
+    public void setHour(int hour) { this.hour = hour; }
 
     public int getDay() {
         return day;
