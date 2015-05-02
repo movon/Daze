@@ -9,7 +9,13 @@ import java.util.List;
  */
 public class Day {
 
+    static Time getFittingTimeForActivity(List<CalendarEvent> schedule, Time wantedTime){
+        return null;
+    }
 
+    static Time getFittingTimeFor2Schedules(List<CalendarEvent> schedule1, List<CalendarEvent> schedule2, Time estimatedTime){
+        return null;
+    }
 
     private List<CalendarEvent> schedule;
     private Date date;
@@ -20,11 +26,11 @@ public class Day {
     public List<CalendarEvent> getSchedule() {
         return schedule;
     }
-    public Date getDate(){
-        return date;
-    }
+    public Date getDate(){return date;}
     public void addEvent(CalendarEvent event){
         schedule.add(event);
     }
     public void removeEvent(CalendarEvent event){schedule.remove(event); }
+
+
 }

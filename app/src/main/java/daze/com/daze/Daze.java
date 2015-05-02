@@ -2,9 +2,10 @@ package daze.com.daze;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.GestureDetector;
+import android.support.v4.view.GestureDetectorCompat;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -35,11 +36,12 @@ TODO LIST:
 
 public class Daze extends Activity{
 
-
+    RelativeLayout rl;
     Calendar calendar;
     Date date;
     Button[] daysButtons;
     TableLayout tl;
+    GestureDetectorCompat mDetector;
     public static String[] months = new String[]{"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 
     @Override
@@ -47,6 +49,7 @@ public class Daze extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daze);
 
+        Date.initDictionaries();
         calendar = new Calendar();
 
 
@@ -68,24 +71,11 @@ public class Daze extends Activity{
 
         final Toast swipeLeftToast = Toast.makeText(getApplicationContext(), "You swiped left", Toast.LENGTH_SHORT);
 
-        RelativeLayout rl = (RelativeLayout)findViewById(R.id.relativeLayout);
-        rl.setOnTouchListener(new OnSwipeTouchListener(getApplicationContext()) {
+        rl = (RelativeLayout)findViewById(R.id.relativeLayout);
+        rl.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onSwipeLeft() {
-                swipeLeftToast.show();
-                for(int i=0;i<3;i++)
-                    date.incrementDay();
-                updateDatesButtons();
-                // Whatever
-            }
-
-            @Override
-            public void onSwipeRight() {
-                swipeRightToast.show();
-                for(int i=0;i<3;i++)
-                    date.decrementDay();
-                updateDatesButtons();
-                // Whatever
+            public boolean onTouch(View v, MotionEvent event) {
+                return false;
             }
         });
 
@@ -108,10 +98,11 @@ public class Daze extends Activity{
         date = new Date(Calendar.currentYear(), Calendar.currentMonth(), Calendar.currentDayOfMonth());
 
         Time time = new Time(2015,1,1,1,1);
+
         List<User> participants = new ArrayList<User>();
         String eventDescription = "Work with mov_on.";
 
-        Calendar.dateToDay.get(Date.formatDate(date)).addEvent(new CalendarEvent(time, participants,eventDescription));
+        Calendar.dateToDay.get(Date.formatDate(date)).addEvent(new CalendarEvent(time, participants,eventDescription, 60*24));
 
 
         Time time2 = new Time(2015,1,1,1,1);
@@ -120,7 +111,7 @@ public class Daze extends Activity{
 
         Date tempDate2 = new Date(date.getYear(),date.getMonth(),date.getDay());
         tempDate2.incrementDay();
-        Calendar.dateToDay.get(Date.formatDate(tempDate2)).addEvent(new CalendarEvent(time2, participants2, eventDescription2));
+        Calendar.dateToDay.get(Date.formatDate(tempDate2)).addEvent(new CalendarEvent(time2, participants2, eventDescription2, 60*24));
 
 
 

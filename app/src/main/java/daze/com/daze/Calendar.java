@@ -15,7 +15,6 @@ public class Calendar {
 
     static Map<String, Day> dateToDay = new HashMap<String, Day>();
 
-    private List<Year> years;
 
     Date date;
     void initCalendar(){
@@ -28,15 +27,6 @@ public class Calendar {
 
     public Calendar(){//get id of user
         initCalendar();
-        this.years=years;
-    }
-
-    public List<Year> getSchedule(){
-        return years;
-    }
-    //public getDayAsDate()
-    public List<Year> getYears() {
-        return years;
     }
 
     public static int currentYear(){

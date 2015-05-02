@@ -7,7 +7,10 @@ import java.util.Map;
  * Created by Tal on 5/1/2015.
  */
 public class Date {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4ea9885ede1cf0a1ef7d6dd0b6387a72e9ce7c09
     private int year;
     private int month;
     private int day;
@@ -35,6 +38,7 @@ public class Date {
     public void setYear(int year) {
         this.year = year;
     }
+
     private static Map<Integer, Integer> months;
     private static Map<Integer, Integer> leapMonths;
 
@@ -43,6 +47,9 @@ public class Date {
         this.month = month;
         this.day = day;
 
+    }
+
+    public static void initDictionaries(){
         months = new HashMap<Integer, Integer>();
         months.put(1, 31);
         months.put(2, 28);
