@@ -4,11 +4,12 @@ package daze.com.daze;
  * Created by Tal on 5/1/2015.
  */
 public class Time {
+    private int minute;
     private int hour;
     private int day;
     private int month;
     private int year;
-    private int minute;
+
 
     public Time(int year, int month, int day, int hour, int minute){
         this.year = year;

@@ -71,26 +71,10 @@ public class Date {
         leapMonths.put(10, 31);
         leapMonths.put(11, 30);
         leapMonths.put(12, 31);
-
     }
     public void incrementDay(){
         day++;
-        boolean leapYear;
-        if (year % 4 != 0)
-            leapYear = false;
-        else
-            if (year % 100 != 0)
-                leapYear = true;
-            else
-                if (year%400 != 0)
-                    leapYear= false;
-                else
-                    leapYear = true;
-        int daysinmonth;
-        if(!leapYear)
-            daysinmonth = months.get(month);
-        else
-            daysinmonth = leapMonths.get(month);
+        int daysinmonth = getDaysInMonth(month);
         if(day > daysinmonth){
             day = 1;
             if(month >= 12){
@@ -100,6 +84,42 @@ public class Date {
             else
                 month++;
         }
+    }
+    public void decrementDay(){
+        day--;
+        if(day == 0)
+        {
+            if(month > 1)
+            {
+                month--;
+                day = getDaysInMonth(month);
+            }
+            else{
+                year--;
+                month = 12;
+                day = getDaysInMonth(month);
+            }
+        }
+    }
+
+    private int getDaysInMonth(int month){
+        boolean leapYear;
+        if (year % 4 != 0)
+            leapYear = false;
+        else
+        if (year % 100 != 0)
+            leapYear = true;
+        else
+        if (year%400 != 0)
+            leapYear= false;
+        else
+            leapYear = true;
+        int daysinmonth;
+        if(!leapYear)
+            daysinmonth = months.get(month);
+        else
+            daysinmonth = leapMonths.get(month);
+        return daysinmonth;
     }
 
     @Override
@@ -111,10 +131,10 @@ public class Date {
         while(year.length() < 4)
             year = "0" + year;
         String month = date.getMonth()+"";
-        while(month.length() < 4)
+        while(month.length() < 2)
             month = "0" + month;
         String day = date.getDay()+"";
-        while(day.length() < 4)
+        while(day.length() < 2)
             day = "0" + day;
         return year+month+day;
     }

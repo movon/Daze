@@ -1,16 +1,12 @@
 package daze.com.daze;
 
 import android.app.Activity;
-import android.content.ClipData;
 import android.os.Bundle;
-import android.view.DragEvent;
+import android.view.GestureDetector;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -35,12 +31,12 @@ TODO LIST:
 11.Add scial event chat
 12.Make new notification
 13.Highlight and flash hours that have a notification
- */
+*/
 
 public class Daze extends Activity{
 
+
     Calendar calendar;
-    Button incrementDayButton;
     Date date;
     TextView dateTV;
     Button[] daysButtons;
@@ -63,31 +59,37 @@ public class Daze extends Activity{
 
         dateTV = (TextView)findViewById(R.id.dateTV);
         date = new Date(Calendar.currentYear(), Calendar.currentMonth(), Calendar.currentDayOfMonth());
-        incrementDayButton = (Button)findViewById(R.id.incrementDayButton);
-        incrementDayButton.setOnClickListener(new View.OnClickListener() {
+
+
+
+
+        updateDatesButtons();
+
+        final Toast swipeRightToast = Toast.makeText(getApplicationContext(), "You swiped right", Toast.LENGTH_SHORT);
+
+
+        final Toast swipeLeftToast = Toast.makeText(getApplicationContext(), "You swiped left", Toast.LENGTH_SHORT);
+
+        RelativeLayout rl = (RelativeLayout)findViewById(R.id.relativeLayout);
+        rl.setOnTouchListener(new OnSwipeTouchListener(getApplicationContext()) {
             @Override
-            public void onClick(View v) {
-                date.incrementDay();
-                dateTV.setText(Date.dateToString(date));
-                Date tempDate;
-                tempDate = new Date(date.getYear(), date.getMonth(), date.getDay());
-                for (int i = 0; i < 3; i++) {
-                    daysButtons[i].setText(Date.dateToString(tempDate));
-                    tempDate.incrementDay();
-                }
-                tempDate = null;
+            public void onSwipeLeft() {
+                swipeLeftToast.show();
+                for(int i=0;i<3;i++)
+                    date.incrementDay();
+                updateDatesButtons();
+                // Whatever
+            }
+
+            @Override
+            public void onSwipeRight() {
+                swipeRightToast.show();
+                for(int i=0;i<3;i++)
+                    date.decrementDay();
+                updateDatesButtons();
+                // Whatever
             }
         });
-
-
-
-        Date tempDate = new Date(date.getYear(), date.getMonth(), date.getDay());
-        for(int i =0; i < 3;i++) {
-            daysButtons[i].setAllCaps(false);
-            daysButtons[i].setText(Date.dateToString(tempDate));
-            tempDate.incrementDay();
-        }
-        tempDate = null;
 
         tl = (TableLayout)findViewById(R.id.tableLayout);
         tl.bringToFront();
@@ -135,8 +137,12 @@ public class Daze extends Activity{
 
 
 
+
+        Date tempDate3;
+        tempDate3 = new Date(date.getYear(),date.getMonth(),date.getDay());
+
         for(int i = 1;i<=3;i++){
-            List<CalendarEvent> schedule = Calendar.dateToDay.get(Date.formatDate(date)).getSchedule();
+            List<CalendarEvent> schedule = Calendar.dateToDay.get(Date.formatDate(tempDate3)).getSchedule();
             for(int j =0; j< schedule.size();j++){
                 if(schedule.get(j) != null)
                 {
@@ -146,7 +152,7 @@ public class Daze extends Activity{
                     tableRows[j].addView(description);
                 }
             }
-            date.incrementDay();
+            tempDate3.incrementDay();
         }
 
         tl.addView(tr);
@@ -157,6 +163,18 @@ public class Daze extends Activity{
 
 
 
+
+
+    }
+
+    private void updateDatesButtons() {
+        Date tempDate = new Date(date.getYear(), date.getMonth(), date.getDay());
+        for(int i =0; i < 3;i++) {
+            daysButtons[i].setAllCaps(false);
+            daysButtons[i].setText(Date.dateToString(tempDate));
+            tempDate.incrementDay();
+        }
+        tempDate = null;
     }
 
     @Override
@@ -180,5 +198,7 @@ public class Daze extends Activity{
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
 
