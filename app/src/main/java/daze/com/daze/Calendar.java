@@ -39,5 +39,15 @@ public class Calendar {
         return java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_MONTH);
     }
 
-
+    public Time findTime(Time startTime, Time endTime, int duration, CalendarEvent event) {
+        Time scheduled = startTime;
+        while(Compare(scheduled, endTime)==-1)
+        {
+            for(CalendarEvent events:Calendar.dateToDay.get(scheduled).getSchedule())
+            {
+                if()
+            }
+            scheduled.incrementDay();
+        }
+    }
 }
