@@ -3,7 +3,7 @@ package daze.com.daze;
 /**
  * Created by Tal on 5/1/2015.
  */
-public class Time {
+public class Time extends Date{
     private int minute;
     private int hour;
     private int day;
@@ -12,11 +12,14 @@ public class Time {
 
 
     public Time(int year, int month, int day, int hour, int minute){
-        this.year = year;
-        this.month = month;
-        this.day = day;
+        super(year,month,day);
         this.hour = hour;
         this.minute = minute;
+    }
+
+    public int minutesSinceDayStarted()
+    {
+        return hour*60 + minute;
     }
 
     public int getHour() {
@@ -97,6 +100,21 @@ public class Time {
             }
         }
         return msg;
+    }
+
+    public void incrementHour(){
+        hour++;
+        if(hour>=24) {
+            hour = 0;
+            incrementDay();
+        }
+    }
+    public void incrementMinute(){
+        minute++;
+        if(minute>=24) {
+            minute = 0;
+            incrementHour();
+        }
     }
 
 }

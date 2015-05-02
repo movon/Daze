@@ -34,24 +34,18 @@ public class Date {
     public void setYear(int year) {
         this.year = year;
     }
+
     private static Map<Integer, Integer> months;
     private static Map<Integer, Integer> leapMonths;
-    public Date(Time time){
-        this.year = time.getYear();
-        this.month = time.getMonth();
-        this.day = time.getDay();
 
-        initDictionaries();
-    }
     public Date(int year, int month, int day){
         this.year = year;
         this.month = month;
         this.day = day;
 
-        initDictionaries();
     }
 
-    public void initDictionaries(){
+    public static void initDictionaries(){
         months = new HashMap<Integer, Integer>();
         months.put(1, 31);
         months.put(2, 28);

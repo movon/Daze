@@ -9,5 +9,5 @@ public class Month {
     private List<Week> weeks;
 
 
-    public Month(List<Day> days){this.weeks=weeks;}
+    public Month(List<Week> weeks){this.weeks=weeks;}
 }
