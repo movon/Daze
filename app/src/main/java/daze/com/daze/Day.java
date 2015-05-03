@@ -32,7 +32,6 @@ public class Day {
     }
     public void removeEvent(CalendarEvent event){schedule.remove(event); }
 
-<<<<<<< HEAD
     public CalendarEvent getNextEvent(Time startTime) {
         int mindiff = 0;
         CalendarEvent nextevent = null;
@@ -63,21 +62,22 @@ public class Day {
             return nextevent;
         }
     }
-=======
+
     public CalendarEvent nextEvent(Time startTime){
         CalendarEvent nextevent = null;
 
         for(int i=0; i< schedule.size();i++){
-            if(nextevent == null && Time.minutesDifference(schedule.get(i).getTime(), startTime) < 0)
+            if(nextevent == null && Time.minutesDifference(schedule.get(i).getTime(), startTime) > 0)
                 nextevent = schedule.get(i);
-            if(Time.minutesDifference(schedule.get(i).getTime(), startTime) < 0)
-                continue;
-            else if (Time.minutesDifference(nextevent.getTime(), schedule.get(i).getTime()) > 0)
-                nextevent = schedule.get(i);
+            else
+            {
+                if(Time.minutesDifference(schedule.get(i).getTime(), startTime) < 0)
+                    continue;
+                else if (Time.minutesDifference(nextevent.getTime(), schedule.get(i).getTime()) > 0)
+                    nextevent = schedule.get(i);
+            }
         }
         return nextevent;
     }
-
->>>>>>> 205d7c240673dc738697125e6b5ef504f83bbf53
 
 }

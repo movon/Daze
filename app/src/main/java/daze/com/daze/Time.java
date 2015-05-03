@@ -115,6 +115,7 @@ public class Time extends Date{
     public static int minutesDifference(Time time1, Time time2){
         return (time1.minutesSinceDayStarted()-time2.minutesSinceDayStarted());
     }
+
     public static int cmpTimes(Time time1,Time time2)
     {
         if(time1.getYear()>time2.getYear())
