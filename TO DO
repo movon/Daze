@@ -1,0 +1,18 @@
+Slide between dates
+Day View - Show 24 hours with tabs for other days
+(3 Day View - Show all events for 3 days with scrolling options)
+Week View - Show all events for next week
+Month View - Show important/starred/favorite events for this month with scrolling options and highlighted invites
+Year
+
+Let user add an event
+Expand day and show detailed schedule
+Define default week
+Save Calendar object
+Check messages for events
+Add Event chat
+Add Event time sync
+Add social event requests
+Add social event chat
+Make new notification
+Highlight and flash hours that have a notification

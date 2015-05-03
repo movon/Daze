@@ -17,23 +17,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-TODO LIST:
-1.Slide between dates V
-2.Show whole week, month
-3.Let user add an event
-4.Expand day and show detailed schedule
-5.Define default week
-6.Save Calendar object
-7.Check messages for events
-8.Add Event chat
-9.Add Event time sync
-10.Add social event requests
-11.Add scial event chat
-12.Make new notification
-13.Highlight and flash hours that have a notification
-*/
-
 public class Daze extends Activity{
 
     RelativeLayout rl;
