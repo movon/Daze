@@ -129,7 +129,23 @@ public class Time extends Date{
                 if(time1.getDay()>time2.getDay())
                     return 1;
                 else if(time1.getDay()==time2.getDay())
-                    return 0;
+                {
+                    if(time1.getHour()>time2.getHour())
+                        return 1;
+                    else if(time1.getHour()==time2.getHour())
+                    {
+                        if(time1.getMinute()>time2.getMinute())
+                            return 1;
+                        else if(time1.getMinute()==time2.getMinute())
+                            return 0;
+                        else
+                            return -1;
+                    }
+                    else
+                        return -1;
+
+                }
+
                 else
                     return -1;
             }
